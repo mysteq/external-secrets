@@ -351,12 +351,12 @@ func getCertificateFromValue(value []byte) (*x509.Certificate, error) {
 	}
 
 	// 2nd: try decode pkcs12 with chain
-	_, localCert, _, err := gopkcs12.DecodeChain(value, "")
+	_, localCert, _, err = gopkcs12.DecodeChain(value, "")
 	if err == nil {
 		return localCert, nil
 	}
 
-	// 3nd: try DER
+	// 3rd: try DER
 	localCert, err = x509.ParseCertificate(value)
 	if err == nil {
 		return localCert, nil
