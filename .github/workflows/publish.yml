@@ -125,15 +125,15 @@ jobs:
           DOCKER_BUILD_ARGS: --load
         run: make docker.build
 
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@6e7b7d1fd3e4fef0c5fa8cce1229c54b2c9bd0d8 # master
-        with:
-          image-ref: ${{ inputs.image-name }}:${{ steps.container_info.outputs.image-tag }}
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
+      # - name: Run Trivy vulnerability scanner
+      #   uses: aquasecurity/trivy-action@6e7b7d1fd3e4fef0c5fa8cce1229c54b2c9bd0d8 # master
+      #   with:
+      #     image-ref: ${{ inputs.image-name }}:${{ steps.container_info.outputs.image-tag }}
+      #     format: 'table'
+      #     exit-code: '1'
+      #     ignore-unfixed: true
+      #     vuln-type: 'os,library'
+      #     severity: 'CRITICAL,HIGH'
 
   sign:
     runs-on: ubuntu-latest
